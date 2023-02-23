@@ -1,5 +1,9 @@
 <?php 
     $npm = 19;
+    $npm *= 5;
+    $npm /= 2;
+    $npm += 75;
+    $npm -= 20;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +16,10 @@
 <body>
     <p>
         Aku adalah angka <b><?php echo $npm ?></b><br>
-        Jika aku di kali 5, maka aku sekarang menjadi <b><?php echo $npm * 5 ?></b><br>
-        Jika aku di bagi 2, maka aku sekarang menjadi <b><?php echo 95 / 2 ?></b><br>
-        Jika aku di tambah 75, maka aku sekarang menjadi <b><?php echo 47.5 + 75 ?></b><br>
-        Jika aku di dikurang 20, maka aku sekarang menjadi <b><?php echo 122.5 - 20 ?></b><br>
+        Jika aku di kali 5, maka aku sekarang menjadi <b><?php echo $npm *= 5 ?></b><br>
+        Jika aku di bagi 2, maka aku sekarang menjadi <b><?php echo $npm /= 2 ?></b><br>
+        Jika aku di tambah 75, maka aku sekarang menjadi <b><?php echo $npm += 75 ?></b><br>
+        Jika aku di dikurang 20, maka aku sekarang menjadi <b><?php echo $npm -= 20 ?></b><br>
     </p>
    
 
