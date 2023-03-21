@@ -18,7 +18,7 @@ $makanan = ['🍕','🍔','🍟','🌭','🍿'];
         <?php } ?>
     </ul>
     <h2>daftar makanan</h2>
-    <ul>
+    <ul>    
         <?php for($i = 0; $i < 5; $i ++) { ?>
         <li><?= $makanan[$i]; ?></li>
         <?php } ?>
