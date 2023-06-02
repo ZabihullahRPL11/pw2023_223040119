@@ -13,8 +13,8 @@ if(isset($_SESSION['user_id'])){
 
 if(isset($_POST['submit'])){
 
-   $address = $_POST['flat'] .', '.$_POST['building'].', '.$_POST['area'].', '.$_POST['town'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
-   $address = filter_var($address, FILTER_SANITIZE_STRING);
+   $address = $_POST['jln'] .', '.$_POST['no'].', '.$_POST['rt/rw'].', '.$_POST['kel'] .', '. $_POST['kec'] .', '. $_POST['kota'] .', '. $_POST['prov'] .' - '. $_POST['kode'];
+   // $address = filter_var($address, FILTER_SANITIZE_STRING);
 
    $update_address = $conn->prepare("UPDATE `users` set address = ? WHERE id = ?");
    $update_address->execute([$address, $user_id]);
@@ -44,22 +44,26 @@ if(isset($_POST['submit'])){
    
 <?php include 'components/user_header.php' ?>
 
+<?php
+if(!isset($_POST['submit'])) {
+   ?>
 <section class="form-container">
 
-   <form action="" method="post">
-      <h3>your address</h3>
-      <input type="text" class="box" placeholder="flat no." required maxlength="50" name="flat">
-      <input type="text" class="box" placeholder="building no." required maxlength="50" name="building">
-      <input type="text" class="box" placeholder="area name" required maxlength="50" name="area">
-      <input type="text" class="box" placeholder="town name" required maxlength="50" name="town">
-      <input type="text" class="box" placeholder="city name" required maxlength="50" name="city">
-      <input type="text" class="box" placeholder="state name" required maxlength="50" name="state">
-      <input type="text" class="box" placeholder="country name" required maxlength="50" name="country">
-      <input type="number" class="box" placeholder="pin code" required max="999999" min="0" maxlength="6" name="pin_code">
-      <input type="submit" value="save address" name="submit" class="btn">
-   </form>
+<form action="update_address.php" method="post">
+   <h3>alamat anda</h3>
+   <input type="text" class="box" placeholder="nama jalan" required maxlength="50" name="jln">
+   <input type="text" class="box" placeholder="nomor rumah" required maxlength="10" name="no">
+   <input type="text" class="box" placeholder="RT/RW" required maxlength="10" name="rt/rw">
+   <input type="text" class="box" placeholder="nama kelurahan" required maxlength="50" name="kel">
+   <input type="text" class="box" placeholder="nama kecamatan" required maxlength="50" name="kec">
+   <input type="text" class="box" placeholder="kota" required maxlength="50" name="kota">
+   <input type="text" class="box" placeholder="provinsi" required maxlength="50" name="prov">
+   <input type="text" class="box" placeholder="kode pos" required maxlength="5" name="kode">
+   <input type="submit" value="save address" name="submit" class="btn">
+</form>
 
 </section>
+<?php }?>
 
 
 
@@ -71,7 +75,6 @@ if(isset($_POST['submit'])){
 
 
 <?php include 'components/footer.php' ?>
-
 
 
 

@@ -33,15 +33,20 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm password not matched!';
       }else{
-         $insert_user = $conn->prepare("INSERT INTO `users`(name, email, number, password) VALUES(?,?,?,?)");
-         $insert_user->execute([$name, $email, $number, $cpass]);
-         $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-         $select_user->execute([$email, $pass]);
-         $row = $select_user->fetch(PDO::FETCH_ASSOC);
-         if($select_user->rowCount() > 0){
-            $_SESSION['user_id'] = $row['id'];
-            header('location:home.php');
+         try {
+            $insert_user = $conn->prepare("INSERT INTO `users`(name, email, number, password) VALUES(?,?,?,?)");
+            $insert_user->execute([$name, $email, $number, $cpass]);
+            $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
+            $select_user->execute([$email, $pass]);
+            $row = $select_user->fetch(PDO::FETCH_ASSOC);
+            if($select_user->rowCount() > 0){
+               $_SESSION['user_id'] = $row['id'];
+               header('location:home.php');
+            }
+         } catch(Exception $ex){
+            print($ex);
          }
+         
       }
    }
 
@@ -76,7 +81,7 @@ if(isset($_POST['submit'])){
       <h3>register now</h3>
       <input type="text" name="name" required placeholder="enter your name" class="box" maxlength="50">
       <input type="email" name="email" required placeholder="enter your email" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="number" name="number" required placeholder="enter your number" class="box" min="0" max="9999999999" maxlength="10">
+      <input type="phone" name="number" required placeholder="enter your number" class="box" min="0" max="9999999999" maxlength="13">
       <input type="password" name="pass" required placeholder="enter your password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="cpass" required placeholder="confirm your password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="register now" name="submit" class="btn">
