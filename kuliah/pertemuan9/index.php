@@ -14,6 +14,7 @@ $students = [
         
     ],
 ];
+//echo $_SERVER["REQUEST_URL"];
 
 require('views/index.view.php');
 ?>
