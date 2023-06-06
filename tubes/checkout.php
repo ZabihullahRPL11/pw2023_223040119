@@ -82,7 +82,7 @@ if(isset($_POST['submit'])){
 
    <h1 class="title">ringkasan pesanan</h1>
 
-<form action="" method="post">
+<form action="checkout.php" method="post">
 
    <div class="cart-items">
       <h3>cart items</h3>
