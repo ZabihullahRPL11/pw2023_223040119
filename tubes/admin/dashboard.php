@@ -54,9 +54,9 @@ if(!isset($admin_id)){
             $total_pendings += $fetch_pendings['total_price'];
          }
       ?>
-      <h3><span>$</span><?= $total_pendings; ?><span>/-</span></h3>
+      <h3><span>Rp</span><?= $total_pendings; ?><span>/-</span></h3>
       <p>total pendings</p>
-      <a href="placed_orders.php" class="btn">see orders</a>
+      <a href="placed_orders.php" class="btn">lihat pesanan</a>
    </div>
 
    <div class="box">
@@ -68,9 +68,9 @@ if(!isset($admin_id)){
             $total_completes += $fetch_completes['total_price'];
          }
       ?>
-      <h3><span>$</span><?= $total_completes; ?><span>/-</span></h3>
-      <p>total completes</p>
-      <a href="placed_orders.php" class="btn">see orders</a>
+      <h3><span>Rp</span><?= $total_completes; ?><span>/-</span></h3>
+      <p>total selesai</p>
+      <a href="placed_orders.php" class="btn">lihat pesanan</a>
    </div>
 
    <div class="box">
@@ -80,8 +80,8 @@ if(!isset($admin_id)){
          $numbers_of_orders = $select_orders->rowCount();
       ?>
       <h3><?= $numbers_of_orders; ?></h3>
-      <p>total orders</p>
-      <a href="placed_orders.php" class="btn">see orders</a>
+      <p>total pesanan</p>
+      <a href="placed_orders.php" class="btn">lihat pesanan</a>
    </div>
 
    <div class="box">
@@ -102,8 +102,8 @@ if(!isset($admin_id)){
          $numbers_of_users = $select_users->rowCount();
       ?>
       <h3><?= $numbers_of_users; ?></h3>
-      <p>users accounts</p>
-      <a href="users_accounts.php" class="btn">see users</a>
+      <p>user akun</p>
+      <a href="users_accounts.php" class="btn">lihat user</a>
    </div>
 
    <div class="box">
@@ -113,8 +113,8 @@ if(!isset($admin_id)){
          $numbers_of_admins = $select_admins->rowCount();
       ?>
       <h3><?= $numbers_of_admins; ?></h3>
-      <p>admins</p>
-      <a href="admin_accounts.php" class="btn">see admins</a>
+      <p>admin</p>
+      <a href="admin_accounts.php" class="btn">lihat admin</a>
    </div>
 
    <div class="box">
@@ -124,8 +124,8 @@ if(!isset($admin_id)){
          $numbers_of_messages = $select_messages->rowCount();
       ?>
       <h3><?= $numbers_of_messages; ?></h3>
-      <p>new messages</p>
-      <a href="messages.php" class="btn">see messages</a>
+      <p>pesanan masuk</p>
+      <a href="messages.php" class="btn">lihat pesan</a>
    </div>
 
    </div>
