@@ -63,7 +63,7 @@ if(isset($_SESSION['user_id'])){
       <p>metode pembayaran : <span><?= $fetch_orders['method']; ?></span></p>
       <p>pesanan anda : <span><?= $fetch_orders['total_products']; ?></span></p>
       <p>total harga : <span>Rp<?= $fetch_orders['total_price']; ?>/-</span></p>
-      <p>status pesanan : <span style="color:<?php if($fetch_orders['order_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
+      <p>status pesanan : <span style="color:<?php if($fetch_orders['order_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['order_status']; ?></span> </p>
    </div>
    <?php
       }
