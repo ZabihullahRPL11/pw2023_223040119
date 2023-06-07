@@ -46,7 +46,7 @@ if(!isset($admin_id)){
             </thead>
             <tbody>
             <?php 
-            $query = $conn->prepare("SELECT placed_on as tanggal,count(*) as jumlah,sum(total_price) as total FROM resto_db.orders GROUP BY placed_on");
+            $query = $conn->prepare("SELECT placed_on as tanggal,count(*) as jumlah,sum(total_price) as total FROM orders GROUP BY placed_on");
             $query->execute();
             $grand = 0;
             $item = 0;
