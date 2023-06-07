@@ -478,7 +478,24 @@ section{
    padding-top: 1rem;
    text-align: center;
 }
-
+.statistik .box-container {
+   display: block;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   /* gap:1.5rem; */
+   justify-content: center;
+   align-items: flex-start;
+}
+.statistik .box-container .box-fluid {
+   min-width: 600px;
+   width: 100%;
+   background-color: var(--white);
+   border-radius: .5rem;
+   box-shadow: var(--box-shadow);
+   border:var(--border);
+   padding:2rem;
+   padding-top: 1rem;
+   text-align: center;
+}
 .accounts .box-container .box p{
    padding: .5rem 0;
    font-size: 1.8rem;
@@ -596,5 +613,31 @@ section{
    .accounts .box-container{
       grid-template-columns: 1fr;
    }
-
+   .statistik .box-container{
+      grid-template-columns: 1fr;
+   }
+}
+.py-10 {
+   padding:10px;
+}
+.py-20 {
+   padding:20px;
+}
+.table {
+   width: 100%;
+   min-width: 500px;
+   border-collapse: collapse;
+   border:1px #000 solid;
+}
+.table th {
+   border-collapse: collapse;
+   font-size: 20px;
+   padding: 10px;
+   border:1px #000 solid;
+}
+.table td {
+   border-collapse: collapse;
+   font-size: 18px;
+   padding: 10px;
+   border: 1px #000 solid;
 }

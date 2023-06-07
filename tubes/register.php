@@ -13,7 +13,7 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   
+   $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $email = $_POST['email'];
    
    $number = $_POST['number'];

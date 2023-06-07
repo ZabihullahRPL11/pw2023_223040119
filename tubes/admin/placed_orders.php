@@ -13,10 +13,10 @@ if(!isset($admin_id)){
 if(isset($_POST['update_payment'])){
 
    $order_id = $_POST['order_id'];
-   $payment_status = $_POST['payment_status'];
-   $update_status = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
+   $payment_status = $_POST['order_status'];
+   $update_status = $conn->prepare("UPDATE `orders` SET order_status = ? WHERE id = ?");
    $update_status->execute([$payment_status, $order_id]);
-   $message[] = 'payment status updated!';
+   $message[] = 'Status Pesanan terupdated!';
 
 }
 
@@ -70,14 +70,16 @@ if(isset($_GET['delete'])){
       <p> nomor : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> alamat : <span><?= $fetch_orders['address']; ?></span> </p>
       <p> total produk : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> total harga : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> total harga : <span>Rp<?= $fetch_orders['total_price']; ?>/-</span> </p>
       <p> metode pembayaran : <span><?= $fetch_orders['method']; ?></span> </p>
-      <form action="" method="POST">
+      <form action="placed_orders.php" method="POST">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-         <select name="payment_status" class="drop-down">
-            <option value="" selected disabled><?= $fetch_orders['payment_status']; ?></option>
-            <option value="pending">tertunda</option>
-            <option value="completed">selesai</option>
+         <select name="order_status" class="drop-down">
+            <option value="pending" selected disabled><?= $fetch_orders['order_status']; ?></option>
+            <option value="bayar">bayar</option>
+            <option value="proses">proses</option>
+            <option value="antar">antar</option>
+            <option value="selesai">selesai</option>
          </select>
          <div class="flex-btn">
             <input type="submit" value="update" class="btn" name="update_payment">

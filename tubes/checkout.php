@@ -10,19 +10,19 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
    header('location:index.php');
 };
-
+$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number = filter_var($number, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email = filter_var($email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $method = $_POST['method'];
-   $method = filter_var($method, FILTER_SANITIZE_STRING);
+   $method = filter_var($method, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $address = $_POST['address'];
-   $address = filter_var($address, FILTER_SANITIZE_STRING);
+   $address = filter_var($address, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
 
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
          $message[] = 'please add your address!';
       }else{
          
-         $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
+         $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price,placed_on) VALUES(?,?,?,?,?,?,?,?,current_date)");
          $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
 
          $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
       <a href="update_profile.php" class="btn">update info</a>
       <h3>alamat pengiriman</h3>
       <p><i class="fas fa-map-marker-alt"></i><span><?php if($fetch_profile['address'] == ''){echo 'please enter your address';}else{echo $fetch_profile['address'];} ?></span></p>
-      <a href="update_address.php" class="btn">update alamat</a>
+      <a href="update_address.php?ref=<?php echo $url;?>" class="btn">update alamat</a>
       <select name="method" class="box" required>
          <option value="" disabled selected>pilih pembayaran --</option>
          <option value="cash on delivery">bayar langsung</option>
@@ -131,7 +131,7 @@ if(isset($_POST['submit'])){
          <option value="paytm">shopee</option>
          <option value="paypal">ovo</option>
       </select>
-      <input type="submit" value="place order" class="btn <?php if($fetch_profile['address'] == ''){echo 'disabled';} ?>" style="width:100%; background:var(--red); color:var(--white);" name="submit">
+      <input type="submit" value="Buat Pesanan" class="btn <?php if($fetch_profile['address'] == ''){echo 'disabled';} ?>" style="width:100%; background:var(--red); color:var(--white);" name="submit">
    </div>
 
 </form>
