@@ -28,7 +28,7 @@ if(!isset($admin_id)){
 <body>
 
 <?php include '../components/admin_header.php' ?>
-
+ 
 <section class="statistik">
     <h1 class="heading">
         STATISTIK
