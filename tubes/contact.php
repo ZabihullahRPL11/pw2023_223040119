@@ -13,25 +13,26 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['send'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   $email = filter_var($email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number = filter_var($number, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
    $msg = $_POST['msg'];
-   $msg = filter_var($msg, FILTER_SANITIZE_STRING);
+   $msg = filter_var($msg, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
    $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
    $select_message->execute([$name, $email, $number, $msg]);
 
    if($select_message->rowCount() > 0){
-      $message[] = 'already sent message!';
+      $message[] = 'pesam terkirim!';
    }else{
 
       $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
-      $insert_message->execute([$user_id, $name, $email, $number, $msg]);
+      $insert_message->execute([intval($user_id), $name, $email, $number, $msg]);
 
-      $message[] = 'sent message successfully!';
+
+      $message[] = 'kirim pesan berhasil!';
 
    }
 
@@ -77,11 +78,11 @@ if(isset($_POST['send'])){
 
       <form action="" method="post">
          <h3>beritahu kami sesuatu!</h3>
-         <input type="text" name="name" maxlength="50" class="box" placeholder="enter your name" required>
-         <input type="number" name="number" min="0" max="9999999999" class="box" placeholder="enter your number" required maxlength="10">
-         <input type="email" name="email" maxlength="50" class="box" placeholder="enter your email" required>
-         <textarea name="msg" class="box" required placeholder="enter your message" maxlength="500" cols="30" rows="10"></textarea>
-         <input type="submit" value="send message" name="send" class="btn">
+         <input type="text" name="name" maxlength="50" class="box" placeholder="masukan nama anda" required>
+         <input type="number" name="number" min="0" max="" class="box" placeholder="masukan nomor anda" required maxlength="15">
+         <input type="email" name="email" maxlength="50" class="box" placeholder="masukan email anda" required>
+         <textarea name="msg" class="box" required placeholder="tulis pesan" maxlength="500" cols="30" rows="10"></textarea>
+         <input type="submit" value="kirim pesan" name="send" class="btn">
       </form>
 
    </div>
