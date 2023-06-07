@@ -61,7 +61,7 @@ if(!isset($_POST['submit'])) {
    ?>
 <section class="form-container">
 <?php 
-if(isset($row)) {
+if(isset($row['address'])) {
    $address = $row['address'];
    $addr = explode(",",$address);
    ?>
