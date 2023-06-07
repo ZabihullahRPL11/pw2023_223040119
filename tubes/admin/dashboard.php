@@ -91,8 +91,8 @@ if(!isset($admin_id)){
          $numbers_of_products = $select_products->rowCount();
       ?>
       <h3><?= $numbers_of_products; ?></h3>
-      <p>products added</p>
-      <a href="products.php" class="btn">see products</a>
+      <p>tambahkan produk</p>
+      <a href="products.php" class="btn">lihat produk</a>
    </div>
 
    <div class="box">
@@ -128,6 +128,11 @@ if(!isset($admin_id)){
       <a href="messages.php" class="btn">lihat pesan</a>
    </div>
 
+   <div class="box">
+      <h3>Statistik</h3>
+      <p>Statistik Pesanan</p>
+      <a href="statistik.php" class="btn">Lihat Statistik</a>
+   </div>
    </div>
 
 </section>
