@@ -92,11 +92,13 @@ if(isset($_SESSION['user_id'])){
 
 </section>
 
+
+
 <!-- steps section ends -->
 
 <!-- reviews section starts  -->
 
-<section class="reviews">
+<!--<section class="reviews">
 
    <h1 class="title">reivew pelanggan</h1>
 
@@ -190,7 +192,7 @@ if(isset($_SESSION['user_id'])){
 
 </section>
 
-<!-- reviews section ends -->
+ reviews section ends -->
 
 
 
