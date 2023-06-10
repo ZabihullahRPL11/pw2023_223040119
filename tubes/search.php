@@ -40,7 +40,7 @@ include 'components/add_cart.php';
 <section class="search-form">
    <form method="post" action="">
       <input type="text" id="keyword" name="keyword" placeholder="search here..." class="box">
-      <button type="button" name="search_btn" class="fas fa-search"></button>
+      
    </form>
 </section>
 
